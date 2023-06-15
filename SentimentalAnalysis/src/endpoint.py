@@ -1,4 +1,4 @@
-import sentimentalanalysis.model.model as model
+import SentimentalAnalysis.model.model as model
 import pandas as pd
 
 
@@ -16,5 +16,3 @@ def predict_script(path):
 
     results = pd.DataFrame(results, columns=["speaker", "sentiment", "probability", "valence"])
     return results
-
-
