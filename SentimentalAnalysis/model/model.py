@@ -3,6 +3,7 @@ import nltk
 import string
 import numpy as np
 import os
+from nltk import WordNetLemmatizer
 
 BASE_DIR = os.path.abspath('')
 SENTIMENT_SCORE_PATH = os.path.join(BASE_DIR, 'SentimentalAnalysis', 'data', 'processed', 'normalized_sentiments.pkl')
@@ -19,7 +20,8 @@ def sigmoid(x):
 
 
 def predict_sentence(sentence):
-    words = [word for word in nltk.word_tokenize(sentence) if word not in string.punctuation]
+    lemmatizer = WordNetLemmatizer()
+    words = [lemmatizer.lemmatize(word) for word in nltk.word_tokenize(sentence) if word not in string.punctuation]
 
     scores = []
     for s in sentiments:
